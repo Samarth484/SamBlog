@@ -36,8 +36,8 @@ res.redirect("/");
 })
 
 // this code below uses route parameters feature of express and makes routing generic
-app.get("/:genericRoute",function(req,res){
-  console.log(req.params.genericRoute);
+app.get("/posts/:newPostRoute",function(req,res){
+  console.log(req.params.newPostRoute);
   res.redirect("/");
 });
 
