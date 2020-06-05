@@ -37,16 +37,17 @@ res.redirect("/");
 
 // this code below uses route parameters feature of express and makes routing generic
 app.get("/posts/:newPostRoute",function(req,res){
+
   posts.forEach(function(val){
     if(_.lowerCase(val.blogTitle)===_.lowerCase(req.params.newPostRoute)){
-    console.log(val.blogTitle+"  Match Found!")
+    res.render("post",{newPostTitle:val.blogTitle,newPostContent:val.blogContent})
   }
   // else{
   //   console.log(_.lowerCase(val.blogTitle)+" Match Not Found!")
   // }
   })
 
-  res.redirect("/");
+  
 });
 
 
