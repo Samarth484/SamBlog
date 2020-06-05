@@ -1,11 +1,8 @@
 <%- include("Partials/header") -%>
 <h1>Home</h1>
 <p><%= startingContent %></p>
+<% newPost.forEach(function(val){ %>
+<h1><%= val.blogTitle %></h1>
+<p><%= val.blogContent%></p>
+<% }) %>
 <%- include("Partials/footer") -%>
-<!-- <% for(let i=0;i<newPost.length;i++){ %>  -->
-<!--  <% console.log(newPost[i].blogTitle); %>   -->
-<!-- <% }  %>  -->
-<!-- the code that is written below this (line 8) line, is nothing but an alternate form of the above commented lines i.e. lines 5,6 and 7 -->
-<%newPost.forEach(function(val){ %>
-<%console.log(val.title) %>
-<%}) %>

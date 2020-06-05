@@ -14,7 +14,7 @@ app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
-var posts=[];
+var posts=[{}];
 app.get("/",function(req,res){
 
   res.render("home",{startingContent:homeStartingContent,newPost:posts});
@@ -34,6 +34,12 @@ const blogObj={blogTitle:req.body.title,blogContent:req.body.postBody};
 posts.push(blogObj)
 res.redirect("/");
 })
+
+// this code below uses route parameters feature of express and makes routing generic
+app.get("/:genericRoute",function(req,res){
+  console.log(req.params.genericRoute);
+  res.redirect("/");
+});
 
 
 
