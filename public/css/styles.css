@@ -42,7 +42,9 @@ background: linear-gradient(to left, #EAECC6, #2BC0E4); /* W3C, IE 10+/ Edge, Fi
    background: linear-gradient(to right, #43c6ac, #191654);
 
 }
-
+p{
+  color:#636262;
+}
 .footer p {
 	margin-top: 25px;
 	font-size: 12px;
