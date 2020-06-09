@@ -15,6 +15,14 @@ app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
+mongoose.connect("mongodb://localhost:27017/blogDB", {useNewUrlParser: true});
+
+const postSchema = {
+ title: String,
+ content: String
+};
+const Post = mongoose.model("Post", postSchema);
+
 var posts=[];
 app.get("/",function(req,res){
 
@@ -31,8 +39,16 @@ app.get("/compose",function(req,res){
 })
 
 app.post("/compose",function(req,res){
-const blogObj={blogTitle:req.body.title,blogContent:req.body.postBody};
-posts.push(blogObj)
+  
+  const post = new Post ({
+    title: req.body.postTitle,
+    content: req.body.postBody
+  });
+
+  post.save();
+  //the below 2 lines have been commented and the above lines from 42 to 48 have been introduced, these are the initial steps in the incorporating of the Database!
+// const blogObj={blogTitle:req.body.title,blogContent:req.body.postBody};
+// posts.push(blogObj)
 res.redirect("/");
 })
 
