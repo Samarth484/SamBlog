@@ -71,16 +71,19 @@ app.post("/compose",function(req,res){
 });
 
 // this code below uses route parameters feature of express and makes routing generic
-app.get("/posts/:newPostRoute",function(req,res){
+app.get("/posts/:postId",function(req,res){
+const requestedPostId = req.params.postId;
+Post.findOne({_id: requestedPostId}, function(err, post){
 
-  posts.forEach(function(val){
-    if(_.lowerCase(val.blogTitle)===_.lowerCase(req.params.newPostRoute)){
-    res.render("post",{newPostTitle:val.blogTitle,newPostContent:val.blogContent})
-  }
-  // else{
-  //   console.log(_.lowerCase(val.blogTitle)+" Match Not Found!")
-  // }
-  })
+ res.render("post", {
+
+   newPostTitle: post.blogTitle,
+
+   newPostContent: post.blogContent
+
+ });
+
+});
 
 
 });

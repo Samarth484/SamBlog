@@ -1,8 +1,10 @@
 <%- include("Partials/header") -%>
+<div class="container">
 <h1>Home</h1>
 <p><%= startingContent %></p>
 <% newPost.forEach(function(val){ %>
 <h1><%= val.blogTitle %></h1>
 <p><%= val.blogContent.substring(0,100)%>... <a href="/posts/<%=val._id %>">Read More</a></p>
 <% }) %>
+</div>
 <%- include("Partials/footer") -%>
