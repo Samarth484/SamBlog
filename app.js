@@ -68,7 +68,7 @@ app.post("/compose",function(req,res){
     res.redirect("/");
   });
 
-})
+});
 
 // this code below uses route parameters feature of express and makes routing generic
 app.get("/posts/:newPostRoute",function(req,res){
